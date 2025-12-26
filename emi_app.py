@@ -2,17 +2,21 @@ import streamlit as st
 import pandas as pd
 import joblib
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 @st.cache_resource
 def load_classification_model():
-    return joblib.load("classification_model.pkl")
+    model_path = os.path.join(BASE_DIR, "classification_model.pkl")
+    return joblib.load(model_path)
 
 @st.cache_resource
 def load_regression_model():
-    return joblib.load("regression_model.pkl")
+    model_path = os.path.join(BASE_DIR, "regression_model.pkl")
+    return joblib.load(model_path)
 
-
-reg_model = load_regression_model()
 clf_model = load_classification_model()
+reg_model = load_regression_model()
+
 
 # --------------------------------------------------
 # Streamlit UI
@@ -310,6 +314,7 @@ elif page == "About":
     The system aims to support responsible lending by combining 
     data-driven insights with business rules to minimize financial risk.
     """)
+
 
 
 
