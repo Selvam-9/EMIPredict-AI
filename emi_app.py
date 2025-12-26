@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -314,6 +315,7 @@ elif page == "About":
     The system aims to support responsible lending by combining 
     data-driven insights with business rules to minimize financial risk.
     """)
+
 
 
 
