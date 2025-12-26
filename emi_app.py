@@ -1,24 +1,17 @@
 import streamlit as st
-import mlflow
-import mlflow.sklearn
 import pandas as pd
-
-# ------------------------------------------------------------------
-# MLflow setup (ABSOLUTE PATH – adjust only if your path changes)
-# ------------------------------------------------------------------
-mlflow.set_tracking_uri(
-    "sqlite:///C:/Users/selvam.anandhan/OneDrive - IDP Education Ltd/Documents/DS/DS with GUVI/Guvi projects/EMIPredict AI/mlflow.db")
+import joblib
 
 @st.cache_resource
 def load_classification_model():
-    model = mlflow.sklearn.load_model(
+    model = joblib.load(
         "runs:/0fb8b57828474ccfb3366c89d2213d05/model"
     )
     return model
 
 @st.cache_resource
 def load_regression_model():
-    model = mlflow.sklearn.load_model("runs:/16f4aa43f8024d479d039faf6c72b898/model")
+    model = joblib.load("runs:/16f4aa43f8024d479d039faf6c72b898/model")
     return model
 
 reg_model = load_regression_model()
@@ -320,4 +313,5 @@ elif page == "About":
     The system aims to support responsible lending by combining 
     data-driven insights with business rules to minimize financial risk.
     """)
+
 
