@@ -4,15 +4,12 @@ import joblib
 
 @st.cache_resource
 def load_classification_model():
-    model = joblib.load(
-        "classification_model.pkl"
-    )
-    return model
+    return joblib.load("classification_model.pkl")
 
 @st.cache_resource
 def load_regression_model():
-    model = joblib.load("regression_model.pkl")
-    return model
+    return joblib.load("regression_model.pkl")
+
 
 reg_model = load_regression_model()
 clf_model = load_classification_model()
@@ -313,6 +310,7 @@ elif page == "About":
     The system aims to support responsible lending by combining 
     data-driven insights with business rules to minimize financial risk.
     """)
+
 
 
 
