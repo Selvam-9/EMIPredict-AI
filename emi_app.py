@@ -1,22 +1,22 @@
 import streamlit as st
-import pandas as pd
-import joblib
 import os
+import joblib
+import pandas as pd
+
+# MUST be the first Streamlit command
+st.set_page_config(page_title="EMIPredict AI", layout="wide")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
 st.write("🔍 BASE_DIR:", BASE_DIR)
 st.write("📂 Files in BASE_DIR:", os.listdir(BASE_DIR))
 
 @st.cache_resource
 def load_classification_model():
-    model_path = os.path.join(BASE_DIR, "classification_model.pkl")
-    return joblib.load(model_path)
+    return joblib.load(os.path.join(BASE_DIR, "classification_model.pkl"))
 
 @st.cache_resource
 def load_regression_model():
-    model_path = os.path.join(BASE_DIR, "regression_model.pkl")
-    return joblib.load(model_path)
+    return joblib.load(os.path.join(BASE_DIR, "regression_model.pkl"))
 
 clf_model = load_classification_model()
 reg_model = load_regression_model()
@@ -25,8 +25,6 @@ reg_model = load_regression_model()
 # --------------------------------------------------
 # Streamlit UI
 # --------------------------------------------------
-
-st.set_page_config(page_title="EMIPredict AI",layout="wide")
 
 st.title("EMIPredict AI")
 st.subheader("Intelligent Financial Risk Assessment Platform")
@@ -318,6 +316,7 @@ elif page == "About":
     The system aims to support responsible lending by combining 
     data-driven insights with business rules to minimize financial risk.
     """)
+
 
 
 
