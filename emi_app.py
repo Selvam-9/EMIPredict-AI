@@ -7,9 +7,6 @@ import pandas as pd
 st.set_page_config(page_title="EMIPredict AI", layout="wide")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-st.write("🔍 BASE_DIR:", BASE_DIR)
-st.write("📂 Files in BASE_DIR:", os.listdir(BASE_DIR))
-
 @st.cache_resource
 def load_classification_model():
     return joblib.load(os.path.join(BASE_DIR, "classification_model.pkl"))
@@ -316,6 +313,7 @@ elif page == "About":
     The system aims to support responsible lending by combining 
     data-driven insights with business rules to minimize financial risk.
     """)
+
 
 
 
